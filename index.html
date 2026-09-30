@@ -63,7 +63,7 @@
       white-space: nowrap;
     }
 
-    /* Hero Banner */
+    /* Hero Banner - No Dark Overlay */
     .hero {
       position: relative;
       min-height: 75vh;
@@ -77,17 +77,13 @@
       transition: background-image 1s ease-in-out;
     }
 
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.75);
-      z-index: 1;
-    }
-
     .hero-content {
       position: relative;
       z-index: 2;
       max-width: 650px;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 25px 15px;
+      border-radius: 8px;
     }
 
     .hero-title {
@@ -95,6 +91,7 @@
       color: #ffffff;
       line-height: 1.3;
       margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
     }
 
     .hero-sub {
@@ -102,6 +99,7 @@
       color: #ffffff;
       line-height: 1.7;
       margin-bottom: 30px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
     }
 
     .btn-group {
@@ -307,8 +305,9 @@
     .social-icons {
       display: flex;
       justify-content: center;
-      gap: 25px;
+      gap: 20px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     .social-icons a {
@@ -429,9 +428,8 @@
 
   <!-- MAIN PAGE VIEW -->
   <div id="mainPage">
-    <!-- Hero with Rotating Banner -->
+    <!-- Hero with Rotating Banner (No Dark Overlay) -->
     <section class="hero" id="heroBg">
-      <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1 class="hero-title serif-font">Palms Eatery</h1>
         <p class="hero-sub">Savor the Goodness. Deliciousness is just a call away!</p>
@@ -499,7 +497,6 @@
     <div class="location-card">
       <h3 class="serif-font">East Legon Branch (Accra)</h3>
       <p><i class="fa-solid fa-phone"></i> 0592244204 / 0544361797</p>
-      <!-- Light mode Google map iframe -->
       <iframe class="map-container" loading="lazy" src="https://maps.google.com/maps?q=Palms%20Eatery%20East%20Legon%20Accra&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
       <div class="loc-actions">
         <a href="https://www.google.com/maps/search/?api=1&query=Palms+Eatery+East+Legon+Accra" target="_blank" class="loc-btn"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
@@ -511,7 +508,6 @@
     <div class="location-card">
       <h3 class="serif-font">KNUST Ayeduase Branch (Kumasi)</h3>
       <p><i class="fa-solid fa-phone"></i> 0554316264 / 0554315114</p>
-      <!-- Light mode Google map iframe -->
       <iframe class="map-container" loading="lazy" src="https://maps.google.com/maps?q=Palms%20Eatery%20Ayeduase%20KNUST%20Kumasi&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
       <div class="loc-actions">
         <a href="https://www.google.com/maps/search/?api=1&query=Palms+Eatery+Ayeduase+KNUST+Kumasi" target="_blank" class="loc-btn"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
@@ -523,7 +519,6 @@
     <div class="location-card">
       <h3 class="serif-font">Ahodwo - Atinga Junction (Kumasi)</h3>
       <p><i class="fa-solid fa-phone"></i> 0591528482 / 0201223856</p>
-      <!-- Light mode Google map iframe -->
       <iframe class="map-container" loading="lazy" src="https://maps.google.com/maps?q=Palms%20Eatery%20Atinga%20Junction%20Ahodwo%20Kumasi&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
       <div class="loc-actions">
         <a href="https://www.google.com/maps/search/?api=1&query=Palms+Eatery+Atinga+Junction+Ahodwo+Kumasi" target="_blank" class="loc-btn"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
@@ -535,10 +530,11 @@
   <!-- Social Footer -->
   <footer>
     <div class="social-icons">
-      <a href="https://www.instagram.com/palms_eatery" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@palms.eatery" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="https://www.snapchat.com/add/palmseatery" target="_blank"><i class="fa-brands fa-snapchat"></i></a>
-      <a href="https://twitter.com/EateryPalm" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://www.instagram.com/palms_eatery" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/search/top?q=Palms%20Eatery" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://twitter.com/EateryPalm" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://www.tiktok.com/@palms.eatery" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.snapchat.com/add/palmseatery" target="_blank" title="Snapchat"><i class="fa-brands fa-snapchat"></i></a>
     </div>
     <p class="copyright-text">&copy; Palms Eatery Ghana. All rights reserved.</p>
   </footer>
