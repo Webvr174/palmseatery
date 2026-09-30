@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset highlight colors & mobile tap shadows */
+    /* Reset tap highlight and outlines */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -22,8 +22,8 @@
       --bg-dark: #000000;
       --bg-card: #111111;
       --text-main: #ffffff;
-      --text-muted: #aaaaaa;
-      --border-color: rgba(255, 255, 255, 0.15);
+      --text-muted: #dddddd;
+      --border-color: rgba(255, 255, 255, 0.2);
     }
 
     body {
@@ -38,35 +38,35 @@
       letter-spacing: 1px;
     }
 
-    /* Single-line Minimal Navbar */
+    /* Single-line Navbar */
     header {
-      padding: 20px;
+      padding: 18px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.95);
       backdrop-filter: blur(8px);
       z-index: 100;
       border-bottom: 1px solid var(--border-color);
     }
 
     .brand-logo {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--text-main);
+      color: #ffffff;
       text-decoration: none;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       white-space: nowrap;
     }
 
-    /* Hero Carousel Banner */
+    /* Hero Banner */
     .hero {
       position: relative;
-      min-height: 80vh;
+      min-height: 75vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -79,8 +79,8 @@
 
     .hero-overlay {
       position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0, 0, 0, 0.7);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
       z-index: 1;
     }
 
@@ -92,13 +92,14 @@
 
     .hero-title {
       font-size: 2.2rem;
+      color: #ffffff;
       line-height: 1.3;
       margin-bottom: 15px;
     }
 
     .hero-sub {
       font-size: 0.95rem;
-      color: var(--text-muted);
+      color: #ffffff;
       line-height: 1.7;
       margin-bottom: 30px;
     }
@@ -112,14 +113,14 @@
 
     .btn-outline, .btn-primary {
       background: transparent;
-      color: #fff;
+      color: #ffffff;
       padding: 14px 28px;
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      border: 1px solid #ffffff;
       width: 100%;
       max-width: 280px;
       cursor: pointer;
@@ -139,86 +140,58 @@
 
     .section-header h2 {
       font-size: 1.8rem;
+      color: #ffffff;
       text-transform: uppercase;
     }
 
     .divider {
       width: 50px;
       height: 1px;
-      background: var(--text-main);
+      background: #ffffff;
       margin: 10px auto 0;
     }
 
-    /* Menu Container */
+    /* Food Photo Gallery Container */
     .menu-container {
-      padding: 60px 20px;
+      padding: 60px 20px 30px;
       max-width: 1000px;
       margin: 0 auto;
     }
 
-    .menu-grid {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
-    .menu-card {
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+    }
+
+    .gallery-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      aspect-ratio: 1 / 1;
     }
 
-    .menu-card img {
+    .gallery-card img {
       width: 100%;
-      height: 200px;
+      height: 100%;
       object-fit: cover;
-      filter: grayscale(20%);
+      display: block;
     }
 
-    .card-body {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-    }
-
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 8px;
-    }
-
-    .item-name {
+    .and-many-more {
+      text-align: center;
+      color: #ffffff;
       font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .item-price {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .item-desc {
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      line-height: 1.5;
-      margin-bottom: 15px;
-    }
-
-    .card-btn {
-      width: 100%;
-      padding: 10px;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: #fff;
-      font-size: 0.75rem;
+      font-weight: 500;
+      margin-top: 25px;
       letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
     }
 
     /* Locations Page View */
@@ -242,21 +215,24 @@
 
     .location-card h3 {
       font-size: 1.2rem;
+      color: #ffffff;
       margin-bottom: 10px;
     }
 
     .location-card p {
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      color: #ffffff;
+      font-size: 0.9rem;
       margin-bottom: 15px;
+      line-height: 1.6;
     }
 
+    /* Light mode Google maps without invert filter */
     .map-container {
       width: 100%;
-      height: 200px;
+      height: 220px;
       border: 0;
       margin-bottom: 15px;
-      filter: grayscale(100%) invert(90%);
+      border-radius: 4px;
     }
 
     .loc-actions {
@@ -268,8 +244,8 @@
     .loc-btn {
       padding: 10px 16px;
       background: transparent;
-      border: 1px solid var(--border-color);
-      color: #fff;
+      border: 1px solid #ffffff;
+      color: #ffffff;
       font-size: 0.8rem;
       text-decoration: none;
       display: flex;
@@ -277,10 +253,53 @@
       gap: 8px;
     }
 
+    /* Branch Lines and Contact Info Section */
+    .contact-info-section {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .contact-info-section h3 {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .branch-block {
+      margin-bottom: 20px;
+    }
+
+    .branch-block h4 {
+      font-size: 1.05rem;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .branch-block p {
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    .email-block {
+      margin-top: 30px;
+      font-size: 0.95rem;
+      color: #ffffff;
+    }
+
+    .email-block a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
     /* Social Footer */
     footer {
-      background: #000;
-      padding: 40px 20px 20px;
+      background: #000000;
+      padding: 30px 20px;
       border-top: 1px solid var(--border-color);
       text-align: center;
     }
@@ -293,16 +312,21 @@
     }
 
     .social-icons a {
-      color: #fff;
+      color: #ffffff;
       font-size: 1.4rem;
       text-decoration: none;
+    }
+
+    .copyright-text {
+      font-size: 0.8rem;
+      color: #ffffff;
     }
 
     /* Modal Popup */
     .modal-overlay {
       position: fixed;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.85);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
       display: none;
       align-items: center;
       justify-content: center;
@@ -315,17 +339,19 @@
     }
 
     .modal-box {
-      background: #111;
+      background: #111111;
       border: 1px solid var(--border-color);
       padding: 30px 20px;
       width: 100%;
       max-width: 400px;
       text-align: center;
+      color: #ffffff;
     }
 
     .modal-box h3 {
       margin-bottom: 15px;
       font-size: 1.2rem;
+      color: #ffffff;
     }
 
     .modal-branch-list {
@@ -337,12 +363,33 @@
 
     .modal-branch-btn {
       padding: 12px;
-      border: 1px solid var(--border-color);
+      border: 1px solid #ffffff;
       background: transparent;
-      color: #fff;
+      color: #ffffff;
       text-decoration: none;
       font-size: 0.85rem;
       display: block;
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      width: 55px;
+      height: 55px;
+      bottom: 80px;
+      right: 20px;
+      background-color: #25d366;
+      color: #ffffff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
     }
 
     /* Fixed Bottom Navigation */
@@ -382,7 +429,7 @@
 
   <!-- MAIN PAGE VIEW -->
   <div id="mainPage">
-    <!-- Hero with Carousel -->
+    <!-- Hero with Rotating Banner -->
     <section class="hero" id="heroBg">
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -395,13 +442,49 @@
       </div>
     </section>
 
-    <!-- Menu Section -->
+    <!-- Food Photos Selection -->
     <section id="menu" class="menu-container">
       <div class="section-header">
         <h2 class="serif-font">Our Selection</h2>
         <div class="divider"></div>
       </div>
-      <div class="menu-grid" id="menuGrid"></div>
+      
+      <!-- 6 Food Photos (3 Top, 3 Bottom) -->
+      <div class="gallery-grid">
+        <div class="gallery-card"><img src="food.jpeg" alt="Palms Eatery Meal 1"></div>
+        <div class="gallery-card"><img src="food1.jpeg" alt="Palms Eatery Meal 2"></div>
+        <div class="gallery-card"><img src="food2.jpeg" alt="Palms Eatery Meal 3"></div>
+        <div class="gallery-card"><img src="food3.jpeg" alt="Palms Eatery Meal 4"></div>
+        <div class="gallery-card"><img src="food3.jpg" alt="Palms Eatery Meal 5"></div>
+        <div class="gallery-card"><img src="food4.jpeg" alt="Palms Eatery Meal 6"></div>
+      </div>
+
+      <p class="and-many-more serif-font">and many more</p>
+    </section>
+
+    <!-- Contact & Branch Lines Information -->
+    <section class="contact-info-section">
+      <h3 class="serif-font">Branch Lines</h3>
+
+      <div class="branch-block">
+        <h4>East Legon (Accra):</h4>
+        <p>0592244204 / 0544361797</p>
+      </div>
+
+      <div class="branch-block">
+        <h4>KNUST (Ayeduase):</h4>
+        <p>0554316264 / 0554315114</p>
+      </div>
+
+      <div class="branch-block">
+        <h4>Ahodwo (Atinga Jnc):</h4>
+        <p>0591528482 / 0201223856</p>
+      </div>
+
+      <div class="email-block">
+        <h4 style="margin-bottom: 5px;">Connect & Email</h4>
+        <p>Email: <a href="mailto:palmseatery.9@gmail.com">palmseatery.9@gmail.com</a></p>
+      </div>
     </section>
   </div>
 
@@ -416,9 +499,10 @@
     <div class="location-card">
       <h3 class="serif-font">East Legon Branch (Accra)</h3>
       <p><i class="fa-solid fa-phone"></i> 0592244204 / 0544361797</p>
-      <iframe class="map-container" src="https://maps.google.com/maps?q=East%20Legon%20Accra%20Palms%20Eatery&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      <!-- Light mode Google map iframe -->
+      <iframe class="map-container" loading="lazy" src="https://maps.google.com/maps?q=Palms%20Eatery%20East%20Legon%20Accra&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
       <div class="loc-actions">
-        <a href="https://maps.google.com/?q=East+Legon+Accra" target="_blank" class="loc-btn"><i class="fa-solid fa-map-location-dot"></i> Open in Maps</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Palms+Eatery+East+Legon+Accra" target="_blank" class="loc-btn"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
         <a href="tel:0592244204" class="loc-btn"><i class="fa-solid fa-phone"></i> Call</a>
       </div>
     </div>
@@ -427,9 +511,10 @@
     <div class="location-card">
       <h3 class="serif-font">KNUST Ayeduase Branch (Kumasi)</h3>
       <p><i class="fa-solid fa-phone"></i> 0554316264 / 0554315114</p>
-      <iframe class="map-container" src="https://maps.google.com/maps?q=Ayeduase%20KNUST%20Kumasi&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      <!-- Light mode Google map iframe -->
+      <iframe class="map-container" loading="lazy" src="https://maps.google.com/maps?q=Palms%20Eatery%20Ayeduase%20KNUST%20Kumasi&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
       <div class="loc-actions">
-        <a href="https://maps.google.com/?q=Ayeduase+KNUST+Kumasi" target="_blank" class="loc-btn"><i class="fa-solid fa-map-location-dot"></i> Open in Maps</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Palms+Eatery+Ayeduase+KNUST+Kumasi" target="_blank" class="loc-btn"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
         <a href="tel:0554316264" class="loc-btn"><i class="fa-solid fa-phone"></i> Call</a>
       </div>
     </div>
@@ -438,15 +523,16 @@
     <div class="location-card">
       <h3 class="serif-font">Ahodwo - Atinga Junction (Kumasi)</h3>
       <p><i class="fa-solid fa-phone"></i> 0591528482 / 0201223856</p>
-      <iframe class="map-container" src="https://maps.google.com/maps?q=Atinga%20Junction%20Ahodwo%20Kumasi&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      <!-- Light mode Google map iframe -->
+      <iframe class="map-container" loading="lazy" src="https://maps.google.com/maps?q=Palms%20Eatery%20Atinga%20Junction%20Ahodwo%20Kumasi&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
       <div class="loc-actions">
-        <a href="https://maps.google.com/?q=Atinga+Junction+Ahodwo+Kumasi" target="_blank" class="loc-btn"><i class="fa-solid fa-map-location-dot"></i> Open in Maps</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Palms+Eatery+Atinga+Junction+Ahodwo+Kumasi" target="_blank" class="loc-btn"><i class="fa-solid fa-map-location-dot"></i> Open in Google Maps</a>
         <a href="tel:0591528482" class="loc-btn"><i class="fa-solid fa-phone"></i> Call</a>
       </div>
     </div>
   </div>
 
-  <!-- Social Icons Footer -->
+  <!-- Social Footer -->
   <footer>
     <div class="social-icons">
       <a href="https://www.instagram.com/palms_eatery" target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -454,14 +540,19 @@
       <a href="https://www.snapchat.com/add/palmseatery" target="_blank"><i class="fa-brands fa-snapchat"></i></a>
       <a href="https://twitter.com/EateryPalm" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
     </div>
-    <p style="font-size: 0.75rem; color: #666;">&copy; Palms Eatery Ghana. All rights reserved.</p>
+    <p class="copyright-text">&copy; Palms Eatery Ghana. All rights reserved.</p>
   </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <div class="whatsapp-float" onclick="openOrderModal()" title="Contact via WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </div>
 
   <!-- Fixed Bottom Navigation -->
   <div class="bottom-nav">
     <div class="bottom-nav-item" onclick="showMainPage() && scrollToMenu()">
       <i class="fa-solid fa-utensils"></i>
-      <span>Our Menu</span>
+      <span>Our Selection</span>
     </div>
     <div class="bottom-nav-item" onclick="showLocationsPage()">
       <i class="fa-solid fa-location-dot"></i>
@@ -473,18 +564,18 @@
   <div class="modal-overlay" id="orderModal">
     <div class="modal-box">
       <h3 class="serif-font">Select Location</h3>
-      <p style="font-size: 0.8rem; color: #aaa;">Choose a branch to order via WhatsApp:</p>
+      <p style="font-size: 0.85rem; color: #ffffff; margin-bottom: 10px;">Choose a branch to order via WhatsApp:</p>
       <div class="modal-branch-list">
         <a href="https://wa.me/233592244204?text=I%20want%20to%20purchase:%20" target="_blank" class="modal-branch-btn">East Legon (0592244204)</a>
         <a href="https://wa.me/233554316264?text=I%20want%20to%20purchase:%20" target="_blank" class="modal-branch-btn">KNUST Ayeduase (0554316264)</a>
-        <a href="https://wa.me/2330591528482?text=I%20want%20to%20purchase:%20" target="_blank" class="modal-branch-btn">Ahodwo (0591528482)</a>
+        <a href="https://wa.me/233591528482?text=I%20want%20to%20purchase:%20" target="_blank" class="modal-branch-btn">Ahodwo (0591528482)</a>
       </div>
-      <button onclick="closeOrderModal()" style="margin-top:20px; background:none; border:none; color:#888; cursor:pointer;">Close</button>
+      <button onclick="closeOrderModal()" style="margin-top:20px; background:none; border:none; color:#ffffff; cursor:pointer; text-decoration:underline;">Close</button>
     </div>
   </div>
 
   <script>
-    // Copy locally transferred WebP image files
+    // Hero Rotating Images
     const images = ['Palm.webp', 'Palm2.webp', 'Palm3.webp'];
     let currentImgIdx = 0;
 
@@ -496,35 +587,11 @@
     rotateHeroImages();
     setInterval(rotateHeroImages, 4000);
 
-    // Menu Item List
-    const menuData = [
-      { name: "Wanoaba Regular", price: "GHS 75.00", desc: "Signature mix of Waakye, Jollof, Spaghetti, Wele, Egg, Fish, Sausage & Plantain.", img: "Palm.webp" },
-      { name: "Wanoaba Pro Max", price: "GHS 140.00", desc: "Loaded portion of signature Wanoaba with extra proteins and toppings.", img: "Palm2.webp" },
-      { name: "Angwamo Special", price: "GHS 50.00", desc: "Ghanaian local oil rice served with fried eggs, sausage, sardine, and ground pepper.", img: "Palm3.webp" },
-      { name: "Ghana Jollof Dish", price: "GHS 60.00", desc: "Smoky long-grain rice served with grilled chicken or fish.", img: "Palm.webp" },
-      { name: "Assorted Fried Rice", price: "GHS 65.00", desc: "Wok-tossed rice with beef, chicken, egg, and fresh garden vegetables.", img: "Palm2.webp" }
-    ];
-
-    function renderMenu() {
-      const grid = document.getElementById('menuGrid');
-      grid.innerHTML = menuData.map(item => `
-        <div class="menu-card">
-          <img src="${item.img}" alt="${item.name}">
-          <div class="card-body">
-            <div class="item-header">
-              <span class="item-name serif-font">${item.name}</span>
-              <span class="item-price">${item.price}</span>
-            </div>
-            <p class="item-desc">${item.desc}</p>
-            <button class="card-btn" onclick="orderItem('${item.name}')">Order Dish</button>
-          </div>
-        </div>
-      `).join('');
-    }
-
+    // Page Views Navigation
     function showMainPage() {
       document.getElementById('mainPage').style.display = 'block';
       document.getElementById('locationsPage').classList.remove('active');
+      return true;
     }
 
     function showLocationsPage() {
@@ -538,6 +605,7 @@
       document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
     }
 
+    // Modal Control
     function openOrderModal() {
       document.getElementById('orderModal').classList.add('active');
     }
@@ -545,18 +613,6 @@
     function closeOrderModal() {
       document.getElementById('orderModal').classList.remove('active');
     }
-
-    function orderItem(itemName) {
-      const modal = document.getElementById('orderModal');
-      const links = modal.querySelectorAll('.modal-branch-btn');
-      links.forEach(link => {
-        const baseUrl = link.href.split('?text=')[0];
-        link.href = `${baseUrl}?text=I%20want%20to%20purchase:%20${encodeURIComponent(itemName)}`;
-      });
-      openOrderModal();
-    }
-
-    renderMenu();
   </script>
 </body>
 </html>
