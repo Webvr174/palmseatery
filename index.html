@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Preload hero background images so they load instantly -->
+  <link rel="preload" as="image" href="Palm.webp">
+  <link rel="preload" as="image" href="Palm2.webp">
+  <link rel="preload" as="image" href="Palm3.webp">
+
   <style>
     /* Reset tap highlight and outlines */
     * {
@@ -63,7 +69,7 @@
       white-space: nowrap;
     }
 
-    /* Hero Banner - No Dark Overlay */
+    /* Hero Banner */
     .hero {
       position: relative;
       min-height: 75vh;
@@ -72,9 +78,11 @@
       justify-content: center;
       text-align: center;
       padding: 100px 20px 40px;
+      background-color: #111111; /* Fallback color to prevent blank screen */
       background-size: cover;
       background-position: center;
-      transition: background-image 1s ease-in-out;
+      background-repeat: no-repeat;
+      transition: background-image 0.8s ease-in-out;
     }
 
     .hero-content {
@@ -224,7 +232,6 @@
       line-height: 1.6;
     }
 
-    /* Light mode Google maps without invert filter */
     .map-container {
       width: 100%;
       height: 220px;
@@ -305,14 +312,13 @@
     .social-icons {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
       margin-bottom: 20px;
-      flex-wrap: wrap;
     }
 
     .social-icons a {
       color: #ffffff;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       text-decoration: none;
     }
 
@@ -428,8 +434,8 @@
 
   <!-- MAIN PAGE VIEW -->
   <div id="mainPage">
-    <!-- Hero with Rotating Banner (No Dark Overlay) -->
-    <section class="hero" id="heroBg">
+    <!-- Hero Banner -->
+    <section class="hero" id="heroBg" style="background-image: url('Palm.webp');">
       <div class="hero-content">
         <h1 class="hero-title serif-font">Palms Eatery</h1>
         <p class="hero-sub">Savor the Goodness. Deliciousness is just a call away!</p>
@@ -449,12 +455,12 @@
       
       <!-- 6 Food Photos (3 Top, 3 Bottom) -->
       <div class="gallery-grid">
-        <div class="gallery-card"><img src="food.jpeg" alt="Palms Eatery Meal 1"></div>
-        <div class="gallery-card"><img src="food1.jpeg" alt="Palms Eatery Meal 2"></div>
-        <div class="gallery-card"><img src="food2.jpeg" alt="Palms Eatery Meal 3"></div>
-        <div class="gallery-card"><img src="food3.jpeg" alt="Palms Eatery Meal 4"></div>
-        <div class="gallery-card"><img src="food3.jpg" alt="Palms Eatery Meal 5"></div>
-        <div class="gallery-card"><img src="food4.jpeg" alt="Palms Eatery Meal 6"></div>
+        <div class="gallery-card"><img src="food.jpeg" alt="Palms Eatery Meal 1" loading="eager"></div>
+        <div class="gallery-card"><img src="food1.jpeg" alt="Palms Eatery Meal 2" loading="eager"></div>
+        <div class="gallery-card"><img src="food2.jpeg" alt="Palms Eatery Meal 3" loading="eager"></div>
+        <div class="gallery-card"><img src="food3.jpeg" alt="Palms Eatery Meal 4" loading="eager"></div>
+        <div class="gallery-card"><img src="food3.jpg" alt="Palms Eatery Meal 5" loading="eager"></div>
+        <div class="gallery-card"><img src="food4.jpeg" alt="Palms Eatery Meal 6" loading="eager"></div>
       </div>
 
       <p class="and-many-more serif-font">and many more</p>
@@ -527,12 +533,10 @@
     </div>
   </div>
 
-  <!-- Social Footer -->
+  <!-- Social Footer (Only Instagram, TikTok, Snapchat) -->
   <footer>
     <div class="social-icons">
       <a href="https://www.instagram.com/palms_eatery" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.facebook.com/search/top?q=Palms%20Eatery" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-      <a href="https://twitter.com/EateryPalm" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
       <a href="https://www.tiktok.com/@palms.eatery" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
       <a href="https://www.snapchat.com/add/palmseatery" target="_blank" title="Snapchat"><i class="fa-brands fa-snapchat"></i></a>
     </div>
@@ -571,16 +575,24 @@
   </div>
 
   <script>
-    // Hero Rotating Images
-    const images = ['Palm.webp', 'Palm2.webp', 'Palm3.webp'];
-    let currentImgIdx = 0;
+    // Image Preloader to eliminate image load flash
+    const heroImages = ['Palm.webp', 'Palm2.webp', 'Palm3.webp'];
+    const preloadedObjects = [];
 
+    heroImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      preloadedObjects.push(img);
+    });
+
+    let currentImgIdx = 0;
     function rotateHeroImages() {
       const heroBg = document.getElementById('heroBg');
-      heroBg.style.backgroundImage = `url('${images[currentImgIdx]}')`;
-      currentImgIdx = (currentImgIdx + 1) % images.length;
+      heroBg.style.backgroundImage = `url('${heroImages[currentImgIdx]}')`;
+      currentImgIdx = (currentImgIdx + 1) % heroImages.length;
     }
-    rotateHeroImages();
+
+    // Start slideshow loop
     setInterval(rotateHeroImages, 4000);
 
     // Page Views Navigation
@@ -592,7 +604,7 @@
 
     function showLocationsPage() {
       document.getElementById('mainPage').style.display = 'none';
-      document.getElementById('locationsPage').classList.add('active');
+      document.getElementById('locationsPage').classList.active ? null : document.getElementById('locationsPage').classList.add('active');
       window.scrollTo(0, 0);
     }
 
